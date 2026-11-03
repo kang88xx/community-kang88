@@ -1,0 +1,7 @@
+output/
+.env
+__pycache__/
+*.pyc
+.venv/
+assets/stock/*
+!assets/stock/.gitkeep

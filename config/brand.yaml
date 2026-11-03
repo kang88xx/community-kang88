@@ -1,0 +1,31 @@
+# 브랜드 토큰 — 템플릿(templates/)은 이 값만 참조한다.
+reference:
+  source: "Mobbin · Cloud Studio (https://mobbin.com/sites/cloudstudio-31fc1f35-7967-465e-88dc-a0822693060f/f50ebdaa-6dce-40fb-8195-79a105def6b6/preview)"
+  screenshots_dir: assets/reference/     # 캡처를 넣으면 아래 토큰을 여기서 추출해 채운다
+  notes: ""                              # 추출한 톤앤매너 요약 (여백, 라운드, 대비, 타이포 성격)
+name: "YOUR_BRAND"
+tagline: ""
+handle:
+  x: "@your_handle"
+  telegram: "@your_channel"
+  reddit: "u/your_name"
+  linkedin: "your-company"
+colors:
+  bg: "#0B0F19"
+  fg: "#F5F7FA"
+  accent: "#4F8CFF"
+  accent2: "#22D3A5"
+  muted: "#8A94A6"
+fonts:
+  heading: {family: "Pretendard", file: "assets/fonts/Pretendard-Bold.otf"}
+  body:    {family: "Pretendard", file: "assets/fonts/Pretendard-Regular.otf"}
+  mono:    {family: "JetBrains Mono", file: "assets/fonts/JetBrainsMono-Regular.ttf"}
+logo:
+  file: "assets/logo/logo.png"
+  position: bottom-right      # top-left | top-right | bottom-left | bottom-right
+  opacity: 0.9
+  size_pct: 12                # 가로 대비 %
+watermark: false
+video:
+  bgm: null                   # assets/audio/*.mp3 경로 또는 null
+  subtitle_style: {font: "Pretendard", size: 42, outline: 2}

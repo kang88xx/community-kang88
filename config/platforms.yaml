@@ -1,0 +1,61 @@
+# 플랫폼 하드 제약 — Validator(코드)가 강제하는 값.
+# 글쓰기 톤/구조는 prompts/<platform>.md 에 있음. 여기엔 숫자만.
+
+telegram:
+  language: [ko]
+  text:
+    max_chars: 4096          # 텍스트 메시지
+    caption_max_chars: 1024  # 미디어 첨부 시 캡션
+    format: html             # html | markdown_v2
+    hashtags: {min: 0, max: 3}
+    max_links: 3
+  media:
+    jpg:   {width: 1280, height: 720,  max_mb: 10}
+    jpg_square: {width: 1080, height: 1080, max_mb: 10}
+    gif:   {width: 720,  height: 405,  max_mb: 10, max_seconds: 15, emit_mp4_twin: true}
+    mp4:   {width: 1280, height: 720,  max_mb: 50, max_seconds: 180, codec: h264, audio: aac}
+
+x:
+  language: [en, ko]
+  text:
+    max_chars: 280           # 트윗 1개. 링크=23자, 이모지/CJK 가중치는 validate.py의 twitter-text 규칙 적용
+    thread: {min_tweets: 1, max_tweets: 6}
+    hashtags: {min: 0, max: 2}
+    max_links: 1
+    alt_text_max_chars: 1000
+  media:
+    jpg:   {width: 1600, height: 900,  max_mb: 5, max_count: 4}
+    jpg_square: {width: 1080, height: 1080, max_mb: 5}
+    gif:   {width: 800,  height: 450,  max_mb: 15, max_seconds: 10, max_count: 1, emit_mp4_twin: true}
+    mp4:   {width: 1280, height: 720,  max_mb: 512, max_seconds: 140, codec: h264, audio: aac}
+
+reddit:
+  language: [en]
+  text:
+    title_max_chars: 300
+    body_max_chars: 40000
+    format: markdown
+    hashtags: {min: 0, max: 0}   # 레딧은 해시태그 금지
+    max_links: 2
+    link_position: bottom        # 외부 링크는 본문 하단
+  media:
+    jpg:   {width: 1200, height: 628,  max_mb: 20}
+    jpg_square: {width: 1080, height: 1080, max_mb: 20}
+    gif:   {width: 800,  height: 450,  max_mb: 100, max_seconds: 30, emit_mp4_twin: true}
+    mp4:   {width: 1280, height: 720,  max_mb: 1024, max_seconds: 900, codec: h264, audio: aac}
+
+linkedin:
+  language: [en]
+  text:
+    max_chars: 3000
+    hook_max_chars: 210          # "더보기" 접힘 전 노출 구간
+    hashtags: {min: 3, max: 5}
+    max_links: 0                 # 본문 링크는 도달률 저하 → first_comment 에 넣음
+    first_comment_max_chars: 1250
+    alt_text_max_chars: 300
+  media:
+    jpg:   {width: 1200, height: 627, max_mb: 8}
+    jpg_portrait: {width: 1080, height: 1350, max_mb: 8}   # 4:5, 피드 점유율 최대
+    jpg_square: {width: 1080, height: 1080, max_mb: 8}
+    gif:   {width: 800, height: 450, max_mb: 8, max_seconds: 10, emit_mp4_twin: true, note: "LinkedIn은 GIF를 정지 이미지로 처리할 수 있음 → MP4 권장"}
+    mp4:   {width: 1920, height: 1080, max_mb: 5120, min_seconds: 3, max_seconds: 600, codec: h264, audio: aac}
